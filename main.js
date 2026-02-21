@@ -1,59 +1,59 @@
-class LottoDisplay extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.numbers = [];
-    }
+// Teachable Machine Model URL
+const URL = "https://teachablemachine.withgoogle.com/models/cc5cMJXrn/";
 
-    connectedCallback() {
-        this.render();
-    }
+let model, webcam, labelContainer, maxPredictions;
 
-    generateNumbers() {
-        const numbers = new Set();
-        while (numbers.size < 6) {
-            numbers.add(Math.floor(Math.random() * 45) + 1);
-        }
-        this.numbers = Array.from(numbers).sort((a, b) => a - b);
-        this.render();
-    }
+// Load the image model and setup the webcam
+async function init() {
+    const startBtn = document.getElementById("start-btn");
+    startBtn.style.display = "none";
 
-    render() {
-        this.shadowRoot.innerHTML = `
-            <style>
-                .lotto-numbers {
-                    display: flex;
-                    justify-content: center;
-                    gap: 15px;
-                    margin-bottom: 30px;
-                    flex-wrap: wrap;
-                }
-                .lotto-ball {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    background-color: var(--main-color, #3498db);
-                    color: var(--white-color, #fff);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 1.8rem;
-                    font-weight: 600;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    transition: transform 0.3s ease;
-                }
-                .lotto-ball:hover {
-                    transform: translateY(-5px);
-                }
-            </style>
-            <div class="lotto-numbers">
-                ${this.numbers.map(number => `<div class="lotto-ball">${number}</div>`).join('')}
-            </div>
-        `;
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+
+    // load the model and metadata
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    // Convenience function to setup a webcam
+    const flip = true; // whether to flip the webcam
+    webcam = new tmImage.Webcam(300, 300, flip); // width, height, flip
+    await webcam.setup(); // request access to the webcam
+    await webcam.play();
+    window.requestAnimationFrame(loop);
+
+    // append elements to the DOM
+    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    labelContainer = document.getElementById("label-container");
+    for (let i = 0; i < maxPredictions; i++) { // and class labels
+        const labelDiv = document.createElement("div");
+        labelDiv.className = "prediction-bar";
+        labelContainer.appendChild(labelDiv);
     }
 }
 
-customElements.define('lotto-display', LottoDisplay);
+async function loop() {
+    webcam.update(); // update the webcam frame
+    await predict();
+    window.requestAnimationFrame(loop);
+}
+
+// run the webcam image through the image model
+async function predict() {
+    const prediction = await model.predict(webcam.canvas);
+    for (let i = 0; i < maxPredictions; i++) {
+        const className = prediction[i].className;
+        const probability = prediction[i].probability.toFixed(2);
+        
+        labelContainer.childNodes[i].innerHTML = `
+            <div class="class-label">${className}</div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: ${probability * 100}%"></div>
+            </div>
+            <div class="probability-label">${(probability * 100).toFixed(0)}%</div>
+        `;
+    }
+}
 
 // Theme toggle logic
 const themeBtn = document.getElementById("theme-btn");
@@ -77,12 +77,7 @@ themeBtn.addEventListener("click", () => {
     }
 });
 
-const generateBtn = document.getElementById("generate-btn");
-const lottoDisplay = document.querySelector('lotto-display');
-
-generateBtn.addEventListener("click", () => {
-    lottoDisplay.generateNumbers();
-});
-
-// Initial generation
-lottoDisplay.generateNumbers();
+const startBtn = document.getElementById("start-btn");
+if (startBtn) {
+    startBtn.addEventListener("click", init);
+}
