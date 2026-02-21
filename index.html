@@ -14,8 +14,13 @@
         <h1>Mountain & River Classifier</h1>
         
         <div class="classifier-container">
-            <button type="button" id="start-btn" class="generate-btn">Start Classifier</button>
-            <div id="webcam-container"></div>
+            <div class="upload-section">
+                <input type="file" id="image-input" accept="image/*" class="file-input">
+                <label for="image-input" class="file-label">이미지 업로드</label>
+            </div>
+            <div id="image-preview-container">
+                <img id="image-preview" src="#" alt="미리보기" style="display: none; max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
+            </div>
             <div id="label-container"></div>
         </div>
 
