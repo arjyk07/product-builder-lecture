@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://productbuilder-week1.web.app/sitemap.xml
+Sitemap: https://arjyk07.github.io/product-builder-lecture/sitemap.xml
