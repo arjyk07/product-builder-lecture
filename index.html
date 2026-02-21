@@ -1,31 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mountain & River Classifier</title>
+    <meta name="description" content="AI 기반의 산과 강 이미지 분류기입니다. 사진을 업로드하여 인공지능이 이미지를 어떻게 분석하는지 확인해보세요. 무료로 산과 강 이미지를 식별합니다.">
+    <meta name="keywords" content="인공지능, 이미지 분류, 산과 강, 딥러닝, Teachable Machine, AI 이미지 인식">
+    <meta property="og:title" content="Mountain & River Classifier - AI 이미지 분석 도구">
+    <meta property="og:description" content="딥러닝 모델을 사용하여 산과 강 이미지를 분류하는 웹 기반 AI 서비스입니다.">
+    <meta property="og:type" content="website">
+    <title>Mountain & River Classifier - AI 이미지 분석 도구</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="theme-toggle">
-        <button id="theme-btn">Dark Mode</button>
-    </div>
-    <div class="container">
-        <h1>Mountain & River Classifier</h1>
-        
-        <div class="classifier-container">
-            <div class="upload-section">
-                <input type="file" id="image-input" accept="image/*" class="file-input">
-                <label for="image-input" class="file-label">이미지 업로드</label>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">AI Classifier</a>
+            <div class="nav-links">
+                <a href="#tool-section">서비스 이용</a>
+                <a href="#about-section">서비스 소개</a>
+                <a href="#how-it-works">원리 설명</a>
+                <button id="theme-btn">Dark Mode</button>
             </div>
-            <div id="image-preview-container">
-                <img id="image-preview" src="#" alt="미리보기" style="display: none; max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero & Tool Section -->
+        <section id="tool-section" class="hero">
+            <h1>산과 강 AI 이미지 분류기</h1>
+            <p class="subtitle">인공지능이 당신의 사진을 분석하여 산인지 강인지 구분해 드립니다.</p>
+            
+            <div class="classifier-container card">
+                <div class="upload-section">
+                    <input type="file" id="image-input" accept="image/*" class="file-input">
+                    <label for="image-input" class="file-label">이미지 업로드하여 분석하기</label>
+                </div>
+                <div id="image-preview-container">
+                    <img id="image-preview" src="#" alt="업로드된 이미지 미리보기" style="display: none;">
+                </div>
+                <div id="label-container"></div>
             </div>
-            <div id="label-container"></div>
+        </section>
+
+        <!-- Google AdSense Placeholder (Example) -->
+        <div class="ad-container">
+            <!-- [구글 애드센스 코드 위치] -->
+            <p style="color: #999; font-size: 0.8rem;">ADVERTISEMENT</p>
         </div>
 
-        <div class="contact-form-container">
-            <h2>제휴 문의</h2>
+        <!-- About Section -->
+        <section id="about-section" class="content-section">
+            <div class="card">
+                <h2>서비스 소개</h2>
+                <p>본 서비스는 최신 딥러닝 기술을 활용하여 산과 강의 이미지를 실시간으로 분류하는 웹 애플리케이션입니다. 사용자는 별도의 설치 없이 브라우저에서 바로 사진을 업로드하여 인공지능의 분석 결과를 확인할 수 있습니다.</p>
+                <p>복잡한 지형지물 사이에서 인공지능이 어떤 특징을 잡아내어 산과 강을 구분하는지 흥미로운 경험을 제공합니다.</p>
+            </div>
+        </section>
+
+        <!-- How it works Section -->
+        <section id="how-it-works" class="content-section grid-section">
+            <div class="card">
+                <h3>어떻게 동작하나요?</h3>
+                <p>이 웹사이트는 Google의 <strong>Teachable Machine</strong> 라이브러리와 <strong>TensorFlow.js</strong>를 기반으로 작동합니다. 사용자가 업로드한 이미지는 외부 서버로 전송되지 않고 브라우저 내부에서 즉시 처리되므로 개인정보가 안전하게 보호됩니다.</p>
+            </div>
+            <div class="card">
+                <h3>학습된 모델 정보</h3>
+                <p>수천 장의 산과 강 이미지를 사전 학습(Pre-training)시킨 모델을 사용합니다. 이미지의 색상 분포, 질감, 수평선 패턴 등을 분석하여 확률론적인 결론을 도출합니다.</p>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-form-container card">
+            <h2>제휴 및 이용 문의</h2>
+            <p>서비스 이용 중 궁금한 점이나 비즈니스 제휴 문의가 있으시면 아래 양식을 통해 연락주세요.</p>
             <form action="https://formspree.io/f/mvzbwpbb" method="POST">
                 <div class="form-group">
                     <label for="email">이메일 주소</label>
@@ -37,20 +84,33 @@
                 </div>
                 <button type="submit" class="submit-btn">문의하기</button>
             </form>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="comments-section card">
+            <h2>사용자 의견</h2>
+            <div id="disqus_thread"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 AI Classifier. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">개인정보 처리방침</a>
+                <a href="https://github.com/arjyk07/product-builder-lecture" target="_blank">GitHub</a>
+            </div>
         </div>
+    </footer>
 
-        <div id="disqus_thread" class="comments-section"></div>
-        <script>
-            (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://product-builder7.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
+    <script>
+        (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://product-builder7.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js" type="module"></script> 
