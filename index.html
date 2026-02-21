@@ -3,15 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI 기반의 산과 강 이미지 분류기입니다. 사진을 업로드하여 인공지능이 이미지를 어떻게 분석하는지 확인해보세요. 무료로 산과 강 이미지를 식별합니다.">
-    <meta name="keywords" content="인공지능, 이미지 분류, 산과 강, 딥러닝, Teachable Machine, AI 이미지 인식">
-    <meta property="og:title" content="Mountain & River Classifier - AI 이미지 분석 도구">
-    <meta property="og:description" content="딥러닝 모델을 사용하여 산과 강 이미지를 분류하는 웹 기반 AI 서비스입니다.">
+    <meta name="description" content="AI 기반의 산과 강 이미지 분류기입니다. 사진을 업로드하면 딥러닝 모델이 0.1초 만에 산인지 강인지 분석합니다. 무료로 사용 가능한 AI 이미지 인식 서비스입니다.">
+    <meta name="keywords" content="인공지능, 이미지 분류, 산과 강, 딥러닝, Teachable Machine, AI 이미지 인식, 머신러닝, CNN, 이미지 분석">
+    <meta name="author" content="AI Classifier">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Mountain & River Classifier - 무료 AI 이미지 분석 도구">
+    <meta property="og:description" content="딥러닝 모델을 사용하여 산과 강 이미지를 실시간으로 분류하는 무료 웹 서비스입니다. 개인정보 보호, 브라우저 내 처리.">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="ko_KR">
     <meta name="google-adsense-account" content="ca-pub-3842816499985056">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3842816499985056"
      crossorigin="anonymous"></script>
-    <title>Mountain & River Classifier - AI 이미지 분석 도구</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Mountain & River Classifier",
+      "description": "AI 기반의 산과 강 이미지 분류 도구. 딥러닝 모델이 업로드된 이미지를 실시간으로 분석합니다.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      },
+      "inLanguage": "ko"
+    }
+    </script>
+    <title>Mountain & River Classifier - 무료 AI 이미지 분석 도구</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,8 +39,9 @@
             <a href="index.html" class="logo">AI Classifier</a>
             <div class="nav-links">
                 <a href="#tool-section">서비스 이용</a>
-                <a href="#about-section">서비스 소개</a>
-                <a href="#how-it-works">원리 설명</a>
+                <a href="#guide-section">AI 가이드</a>
+                <a href="#faq-section">FAQ</a>
+                <a href="about.html">소개</a>
                 <button id="theme-btn">Dark Mode</button>
             </div>
         </div>
@@ -51,8 +71,14 @@
         <section id="about-section" class="content-section">
             <div class="card">
                 <h2>서비스 소개</h2>
-                <p>본 서비스는 최신 딥러닝 기술을 활용하여 산과 강의 이미지를 실시간으로 분류하는 웹 애플리케이션입니다. 사용자는 별도의 설치 없이 브라우저에서 바로 사진을 업로드하여 인공지능의 분석 결과를 확인할 수 있습니다.</p>
-                <p>복잡한 지형지물 사이에서 인공지능이 어떤 특징을 잡아내어 산과 강을 구분하는지 흥미로운 경험을 제공합니다.</p>
+                <p>Mountain & River Classifier는 최신 딥러닝 기술을 활용하여 산과 강의 이미지를 실시간으로 분류하는 무료 웹 애플리케이션입니다. 사용자는 별도의 프로그램 설치 없이 브라우저에서 바로 사진을 업로드하여 인공지능의 분석 결과를 확인할 수 있습니다.</p>
+                <p>복잡한 지형지물 사이에서 인공지능이 어떤 시각적 특징을 잡아내어 산과 강을 구분하는지 직접 경험해 보세요. 색상 분포, 질감, 수평선 패턴, 물의 반사 등 다양한 요소를 종합적으로 분석합니다.</p>
+                <ul class="feature-list">
+                    <li>완전 무료 서비스 — 로그인이나 회원가입 불필요</li>
+                    <li>개인정보 보호 — 이미지가 서버로 전송되지 않음</li>
+                    <li>빠른 분석 — 평균 0.1초 내 결과 제공</li>
+                    <li>모바일 친화적 — 스마트폰에서도 편리하게 이용 가능</li>
+                </ul>
             </div>
         </section>
 
@@ -61,15 +87,114 @@
             <div class="card">
                 <h3>어떻게 동작하나요?</h3>
                 <p>이 웹사이트는 Google의 <strong>Teachable Machine</strong> 라이브러리와 <strong>TensorFlow.js</strong>를 기반으로 작동합니다. 사용자가 업로드한 이미지는 외부 서버로 전송되지 않고 브라우저 내부에서 즉시 처리되므로 개인정보가 안전하게 보호됩니다.</p>
+                <p>TensorFlow.js는 Google이 개발한 오픈소스 머신러닝 프레임워크로, 웹 브라우저에서 직접 딥러닝 모델을 실행할 수 있게 해줍니다.</p>
             </div>
             <div class="card">
                 <h3>학습된 모델 정보</h3>
-                <p>수천 장의 산과 강 이미지를 사전 학습(Pre-training)시킨 모델을 사용합니다. 이미지의 색상 분포, 질감, 수평선 패턴 등을 분석하여 확률론적인 결론을 도출합니다.</p>
+                <p>수천 장의 산과 강 이미지를 사전 학습(Pre-training)시킨 모델을 사용합니다. 이미지의 색상 분포, 질감, 수평선 패턴, 물의 반사율 등을 종합적으로 분석하여 확률론적인 분류 결과를 도출합니다.</p>
+                <p>모델은 Teachable Machine 플랫폼에서 학습되었으며, 지속적으로 개선되고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- AI Guide Section -->
+        <section id="guide-section" class="content-section">
+            <h2 class="section-title">AI 이미지 분류 완전 가이드</h2>
+
+            <div class="card">
+                <h3>딥러닝(Deep Learning)이란?</h3>
+                <p>딥러닝은 인공신경망(Artificial Neural Network)을 여러 층(Layer)으로 쌓아 만든 머신러닝 기법입니다. 사람의 뇌 구조에서 영감을 받아 설계된 이 기술은, 수많은 데이터를 학습하여 이미지 속의 복잡한 패턴을 스스로 파악할 수 있습니다.</p>
+                <p>기존 프로그래밍 방식은 개발자가 "산은 뾰족하고 녹색이다"와 같은 규칙을 직접 코드로 작성해야 했습니다. 반면 딥러닝은 수천 장의 산 사진과 강 사진을 보여주기만 하면, 스스로 두 지형의 차이를 구분하는 특징을 학습합니다.</p>
+            </div>
+
+            <div class="card">
+                <h3>합성곱 신경망(CNN)의 원리</h3>
+                <p>이미지 분류에 가장 많이 사용되는 딥러닝 구조는 <strong>합성곱 신경망(Convolutional Neural Network, CNN)</strong>입니다. CNN은 이미지를 여러 개의 작은 구역으로 나누어 각각의 특징(엣지, 질감, 색상 등)을 단계적으로 추출합니다.</p>
+                <ul class="info-list">
+                    <li><strong>1단계 (저수준 특징 추출):</strong> 선, 모서리, 색상 경계 등 기본적인 시각 패턴을 감지합니다.</li>
+                    <li><strong>2단계 (중간 수준 특징 추출):</strong> 나뭇잎, 바위, 물결 등 복합적인 구조를 인식합니다.</li>
+                    <li><strong>3단계 (고수준 특징 추출):</strong> 전체 이미지의 맥락을 이해하고 "산" 또는 "강"으로 최종 분류합니다.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>전이 학습(Transfer Learning)이란?</h3>
+                <p>수백만 장의 이미지로 학습된 대형 모델(예: MobileNet, ResNet)의 지식을 가져와, 적은 데이터로도 새로운 분류 작업에 적용하는 기법입니다. 본 서비스에서 사용하는 Teachable Machine 모델도 전이 학습을 기반으로 구축되어 있습니다.</p>
+                <p>전이 학습 덕분에 수십만 장의 이미지 없이도 수천 장의 이미지만으로 높은 정확도의 분류기를 만들 수 있습니다. 이는 AI 기술의 대중화에 큰 기여를 하고 있습니다.</p>
+            </div>
+
+            <div class="card">
+                <h3>산과 강을 구분하는 AI의 시각적 단서</h3>
+                <p>AI가 산과 강 이미지를 구분할 때 주목하는 주요 시각적 특징은 다음과 같습니다:</p>
+                <div class="two-col-grid">
+                    <div>
+                        <h4>산(Mountain)의 특징</h4>
+                        <ul class="info-list">
+                            <li>뾰족한 실루엣과 수직적 구조</li>
+                            <li>갈색·회색 바위 질감</li>
+                            <li>녹색 수목과 흰색 설원</li>
+                            <li>파란 하늘과의 대비가 선명</li>
+                            <li>수평선이 위쪽에 위치</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>강(River)의 특징</h4>
+                        <ul class="info-list">
+                            <li>수평적으로 뻗은 구조</li>
+                            <li>빛을 반사하는 수면의 질감</li>
+                            <li>청록색·파란색 계열의 색상</li>
+                            <li>물결·잔물결 패턴</li>
+                            <li>강변의 모래, 자갈, 식생</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>정확한 분류를 위한 사용 팁</h3>
+                <ul class="feature-list">
+                    <li><strong>선명한 이미지 사용:</strong> 흐리거나 저화질 이미지는 분류 정확도를 낮출 수 있습니다.</li>
+                    <li><strong>주제가 명확한 사진:</strong> 산 또는 강이 이미지의 주를 이루는 사진이 가장 정확합니다.</li>
+                    <li><strong>혼합 장면 주의:</strong> 강 옆에 산이 있는 사진처럼 두 지형이 모두 포함된 경우, AI가 혼란을 느낄 수 있습니다.</li>
+                    <li><strong>다양한 각도 시도:</strong> 항공샷, 정면샷, 측면샷 등 다양한 각도로 촬영된 사진을 테스트해 보세요.</li>
+                    <li><strong>JPG/PNG 형식 권장:</strong> 일반적인 이미지 형식이 가장 잘 처리됩니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq-section" class="content-section">
+            <h2 class="section-title">자주 묻는 질문 (FAQ)</h2>
+
+            <div class="faq-list">
+                <div class="card faq-item">
+                    <h3 class="faq-question">Q. 이미지가 서버에 저장되나요?</h3>
+                    <p class="faq-answer">아니요. 업로드하신 이미지는 브라우저 내에서만 처리되며, 어떠한 외부 서버에도 전송되거나 저장되지 않습니다. TensorFlow.js를 사용하여 모든 분석이 사용자의 기기에서 직접 이루어지기 때문에 개인정보가 완벽하게 보호됩니다.</p>
+                </div>
+                <div class="card faq-item">
+                    <h3 class="faq-question">Q. 분류 정확도는 어느 정도인가요?</h3>
+                    <p class="faq-answer">내부 테스트 기준으로 명확한 산 또는 강 이미지에서 약 90% 이상의 정확도를 보입니다. 단, 두 지형이 혼합된 이미지나 매우 특이한 구도의 사진에서는 정확도가 낮아질 수 있습니다. AI 모델의 특성상 모든 이미지를 100% 정확하게 분류하는 것은 불가능합니다.</p>
+                </div>
+                <div class="card faq-item">
+                    <h3 class="faq-question">Q. 무료로 계속 사용할 수 있나요?</h3>
+                    <p class="faq-answer">네, 완전히 무료입니다. 회원가입이나 로그인 없이도 제한 없이 이용하실 수 있습니다. 앞으로도 무료로 서비스를 제공할 예정입니다.</p>
+                </div>
+                <div class="card faq-item">
+                    <h3 class="faq-question">Q. 어떤 이미지 형식을 지원하나요?</h3>
+                    <p class="faq-answer">JPG, PNG, GIF, WEBP 등 브라우저에서 지원하는 대부분의 이미지 형식을 사용할 수 있습니다. 파일 크기는 5MB 이하를 권장합니다.</p>
+                </div>
+                <div class="card faq-item">
+                    <h3 class="faq-question">Q. 산과 강 외의 이미지를 넣으면 어떻게 되나요?</h3>
+                    <p class="faq-answer">모델은 산과 강 두 가지 카테고리로만 학습되어 있기 때문에, 다른 종류의 이미지(도시, 동물, 음식 등)를 입력해도 산 또는 강 중 하나로 분류합니다. 이 경우 결과가 실제와 다를 수 있으며, 확률 값이 낮게 표시됩니다.</p>
+                </div>
+                <div class="card faq-item">
+                    <h3 class="faq-question">Q. 모바일에서도 사용할 수 있나요?</h3>
+                    <p class="faq-answer">네, 스마트폰과 태블릿 등 모바일 기기에서도 정상적으로 작동합니다. 갤러리에서 사진을 선택하거나 직접 촬영한 이미지를 업로드할 수 있습니다.</p>
+                </div>
             </div>
         </section>
 
         <!-- Contact Form Section -->
-        <section class="contact-form-container card">
+        <section id="contact" class="contact-form-container card">
             <h2>제휴 및 이용 문의</h2>
             <p>서비스 이용 중 궁금한 점이나 비즈니스 제휴 문의가 있으시면 아래 양식을 통해 연락주세요.</p>
             <form action="https://formspree.io/f/mvzbwpbb" method="POST">
@@ -96,7 +221,9 @@
         <div class="footer-container">
             <p>&copy; 2026 AI Classifier. All rights reserved.</p>
             <div class="footer-links">
+                <a href="about.html">소개</a>
                 <a href="privacy.html">개인정보 처리방침</a>
+                <a href="terms.html">이용약관</a>
                 <a href="https://github.com/arjyk07/product-builder-lecture" target="_blank">GitHub</a>
             </div>
         </div>

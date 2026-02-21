@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://productbuilder-week1.web.app/sitemap.xml
