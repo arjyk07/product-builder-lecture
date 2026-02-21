@@ -183,6 +183,12 @@ h1 {
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
 }
 
+.comments-section {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--main-color);
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 20px;
