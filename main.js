@@ -55,6 +55,28 @@ class LottoDisplay extends HTMLElement {
 
 customElements.define('lotto-display', LottoDisplay);
 
+// Theme toggle logic
+const themeBtn = document.getElementById("theme-btn");
+const currentTheme = localStorage.getItem("theme");
+
+if (currentTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+    themeBtn.textContent = "Light Mode";
+}
+
+themeBtn.addEventListener("click", () => {
+    let theme = document.documentElement.getAttribute("data-theme");
+    if (theme === "dark") {
+        document.documentElement.removeAttribute("data-theme");
+        themeBtn.textContent = "Dark Mode";
+        localStorage.setItem("theme", "light");
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeBtn.textContent = "Light Mode";
+        localStorage.setItem("theme", "dark");
+    }
+});
+
 const generateBtn = document.getElementById("generate-btn");
 const lottoDisplay = document.querySelector('lotto-display');
 
